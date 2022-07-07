@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-function Layout({ title, children }) {
+const Layout = ({ title, children }) => {
   return (
     <>
       <Head>
@@ -33,6 +33,6 @@ function Layout({ title, children }) {
       </div>
     </>
   );
-}
+};
 
 export default Layout;
