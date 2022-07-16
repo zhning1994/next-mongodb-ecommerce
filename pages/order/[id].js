@@ -73,7 +73,7 @@ function OrderScreen() {
           type: 'resetOptions',
           value: {
             'client-id': clientId,
-            currency: 'RM',
+            currency: 'USD',
           },
         });
         paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
@@ -191,9 +191,9 @@ function OrderScreen() {
                         </Link>
                       </td>
                       <td className=" p-5 text-right">{item.quantity}</td>
-                      <td className="p-5 text-right">${item.price}</td>
+                      <td className="p-5 text-right">RM {item.price}</td>
                       <td className="p-5 text-right">
-                        ${item.quantity * item.price}
+                        RM {item.quantity * item.price}
                       </td>
                     </tr>
                   ))}
@@ -208,25 +208,25 @@ function OrderScreen() {
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Items</div>
-                    <div>${itemsPrice}</div>
+                    <div>RM {itemsPrice}</div>
                   </div>
                 </li>{' '}
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Tax</div>
-                    <div>${taxPrice}</div>
+                    <div>RM {taxPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Shipping</div>
-                    <div>${shippingPrice}</div>
+                    <div>RM {shippingPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Total</div>
-                    <div>${totalPrice}</div>
+                    <div>RM {totalPrice}</div>
                   </div>
                 </li>
                 {!isPaid && (
