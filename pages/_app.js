@@ -22,9 +22,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   );
 }
 
-function Auth({ children, adminOnly }) {
+function Auth({ children }) {
   const router = useRouter();
-  const { status, data: session } = useSession({
+  const { status } = useSession({
     required: true,
     onUnauthenticated() {
       router.push('/unauthorized?message=login required');
