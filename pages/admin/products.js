@@ -3,6 +3,8 @@ import Link from 'next/link';
 import React, { useEffect, useReducer } from 'react';
 import Layout from '../../components/Layout';
 import { getError } from '../../utils/error';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -32,14 +34,31 @@ function reducer(state, action) {
   }
 }
 export default function AdminProdcutsScreen() {
-  const [{ loading, error, products, successDelete }, dispatch] = useReducer(
-    reducer,
-    {
-      loading: true,
-      products: [],
-      error: '',
+  const router = useRouter();
+  const [
+    { loading, error, products, successDelete, loadingCreate, loadingDelete },
+    dispatch,
+  ] = useReducer(reducer, {
+    loading: true,
+    products: [],
+    error: '',
+  });
+
+  const createHandler = async () => {
+    if (!window.confirm('Are you sure?')) {
+      return;
     }
-  );
+    try {
+      dispatch({ type: 'CREATE_REQUEST' });
+      const { data } = await axios.post(`/api/admin/products`);
+      dispatch({ type: 'CREATE_SUCCESS' });
+      toast.success('Product created successfully');
+      router.push(`/admin/product/${data.product._id}`);
+    } catch (err) {
+      dispatch({ type: 'CREATE_FAIL' });
+      toast.error(getError(err));
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,6 +77,21 @@ export default function AdminProdcutsScreen() {
       fetchData();
     }
   }, [successDelete]);
+
+  const deleteHandler = async (productId) => {
+    if (!window.confirm('Are you sure?')) {
+      return;
+    }
+    try {
+      dispatch({ type: 'DELETE_REQUEST' });
+      await axios.delete(`/api/admin/products/${productId}`);
+      dispatch({ type: 'DELETE_SUCCESS' });
+      toast.success('Product deleted successfully');
+    } catch (err) {
+      dispatch({ type: 'DELETE_FAIL' });
+      toast.error(getError(err));
+    }
+  };
 
   return (
     <Layout title="Admin Products">
@@ -81,7 +115,16 @@ export default function AdminProdcutsScreen() {
           </ul>
         </div>
         <div className="overflow-x-auto md:col-span-3">
-          <h1 className="mb-4 text-xl">Products</h1>
+          <div className="flex justify-between">
+            <h1 className="mb-4 text-xl">Products</h1>
+            {loadingDelete && <div>Deleting item...</div>}
+            <button
+              disabled={loadingCreate}
+              onClick={createHandler}
+              className="primary-button">
+              {loadingCreate ? 'Loading' : 'Create'}
+            </button>
+          </div>
           {loading ? (
             <div>Loading...</div>
           ) : error ? (
@@ -116,7 +159,12 @@ export default function AdminProdcutsScreen() {
                           </a>
                         </Link>
                         &nbsp;
-                        <button>Delete</button>
+                        <button
+                          onClick={() => deleteHandler(product._id)}
+                          className="default-button"
+                          type="button">
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))}
