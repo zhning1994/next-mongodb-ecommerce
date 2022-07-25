@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Menu } from '@headlessui/react';
 import DropdownLink from './DropdownLink';
 import Cookies from 'js-cookie';
+import Slideshow from './Slideshow';
 
 const Layout = ({ title, children }) => {
   const { status, data: session } = useSession();
@@ -53,7 +54,7 @@ const Layout = ({ title, children }) => {
               {status === 'loading' ? (
                 'Loading'
               ) : session?.user ? (
-                <Menu as="div" className="relative inline-block">
+                <Menu as="div" className="relative inline-block z-50">
                   <Menu.Button className="text-blue-600">
                     {session.user.name}
                   </Menu.Button>
@@ -97,6 +98,7 @@ const Layout = ({ title, children }) => {
             </div>
           </nav>
         </header>
+        <Slideshow />
         <main className="container m-auto mt-4 px-4">{children}</main>
         <footer className="flex justify-center items-center h-10 shadow-inner ">
           <p>CopyRight &copy; 2022 Jupiter </p>
