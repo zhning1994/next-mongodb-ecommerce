@@ -1,14 +1,18 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, Fragment } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Store } from '../utils/Store';
 import { ToastContainer } from 'react-toastify';
 import { signOut, useSession } from 'next-auth/react';
 import 'react-toastify/dist/ReactToastify.css';
-import { Menu } from '@headlessui/react';
+import { Menu, Transition } from '@headlessui/react';
 import DropdownLink from './DropdownLink';
 import Cookies from 'js-cookie';
 import Slideshow from './Slideshow';
+import { CgProfile } from 'react-icons/cg';
+import { RiAdminFill } from 'react-icons/ri';
+import { FaListAlt } from 'react-icons/fa';
+import { MdOutlineLogout } from 'react-icons/md';
 
 const Layout = ({ title, children }) => {
   const { status, data: session } = useSession();
@@ -55,40 +59,55 @@ const Layout = ({ title, children }) => {
                 'Loading'
               ) : session?.user ? (
                 <Menu as="div" className="relative inline-block z-50">
-                  <Menu.Button className="text-blue-600">
+                  <Menu.Button className="text-[#00509d]">
                     {session.user.name}
                   </Menu.Button>
-                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg">
-                    <Menu.Item>
-                      <DropdownLink className="dropdown-link" href="/profile">
-                        Profile
-                      </DropdownLink>
-                    </Menu.Item>
-                    <Menu.Item>
-                      <DropdownLink
-                        className="dropdown-link"
-                        href="/order-history">
-                        Order History
-                      </DropdownLink>
-                    </Menu.Item>
-                    {session.user.isAdmin && (
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95">
+                    <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg rounded-md p-2">
                       <Menu.Item>
                         <DropdownLink
-                          className="dropdown-link"
-                          href="/admin/dashboard">
-                          Admin Dashboard
+                          className="dropdown-link flex items-center gap-2 "
+                          href="/profile">
+                          <CgProfile />
+                          Profile
                         </DropdownLink>
                       </Menu.Item>
-                    )}
-                    <Menu.Item>
-                      <a
-                        className="dropdown-link"
-                        href="#"
-                        onClick={logoutClickHandler}>
-                        Logout
-                      </a>
-                    </Menu.Item>
-                  </Menu.Items>
+                      <Menu.Item>
+                        <DropdownLink
+                          className="dropdown-link flex items-center gap-2"
+                          href="/order-history">
+                          <FaListAlt />
+                          Order History
+                        </DropdownLink>
+                      </Menu.Item>
+                      {session.user.isAdmin && (
+                        <Menu.Item>
+                          <DropdownLink
+                            className="dropdown-link flex items-center gap-2"
+                            href="/admin/dashboard">
+                            <RiAdminFill />
+                            Admin Dashboard
+                          </DropdownLink>
+                        </Menu.Item>
+                      )}
+                      <Menu.Item>
+                        <a
+                          className="dropdown-link flex items-center gap-2"
+                          href="#"
+                          onClick={logoutClickHandler}>
+                          <MdOutlineLogout />
+                          Logout
+                        </a>
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Transition>
                 </Menu>
               ) : (
                 <Link href="/login">
