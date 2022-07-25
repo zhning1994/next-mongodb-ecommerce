@@ -61,7 +61,7 @@ const Slideshow = () => {
     ),
   };
   return (
-    <div className="m-10">
+    <div className="mb-2">
       <Fade {...fadeProperty}>
         {images.map((each, index) => (
           <div key={index} className="flex w-full h-96">

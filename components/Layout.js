@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Menu, Transition } from '@headlessui/react';
 import DropdownLink from './DropdownLink';
 import Cookies from 'js-cookie';
-import Slideshow from './Slideshow';
 import { CgProfile } from 'react-icons/cg';
 import { RiAdminFill } from 'react-icons/ri';
 import { FaListAlt } from 'react-icons/fa';
@@ -117,7 +116,6 @@ const Layout = ({ title, children }) => {
             </div>
           </nav>
         </header>
-        <Slideshow />
         <main className="container m-auto mt-4 px-4">{children}</main>
         <footer className="flex justify-center items-center h-10 shadow-inner ">
           <p>CopyRight &copy; 2022 Jupiter </p>
