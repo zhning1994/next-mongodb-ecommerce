@@ -12,6 +12,7 @@ import { CgProfile } from 'react-icons/cg';
 import { RiAdminFill } from 'react-icons/ri';
 import { FaListAlt } from 'react-icons/fa';
 import { MdOutlineLogout } from 'react-icons/md';
+import SearchBar from './SearchBar';
 
 const Layout = ({ title, children }) => {
   const { status, data: session } = useSession();
@@ -39,10 +40,11 @@ const Layout = ({ title, children }) => {
       <ToastContainer position="bottom-center" limit={1} />
       <div className="flex min-h-screen flex-col justify-between">
         <header>
-          <nav className="flex h-12 items-center p-4 justify-between shadow-md">
+          <nav className="flex h-12 items-center p-4 justify-between shadow-md ">
             <Link href="/">
               <a className="text-lg font-bold">Jupiter</a>
             </Link>
+            <SearchBar />
             <div>
               <Link href="/cart">
                 <a className="p-2">
