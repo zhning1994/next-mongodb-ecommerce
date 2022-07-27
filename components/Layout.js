@@ -13,6 +13,7 @@ import { RiAdminFill } from 'react-icons/ri';
 import { FaListAlt } from 'react-icons/fa';
 import { MdOutlineLogout } from 'react-icons/md';
 import SearchBar from './SearchBar';
+import FooterScreen from './Footer';
 
 const Layout = ({ title, children }) => {
   const { status, data: session } = useSession();
@@ -119,9 +120,7 @@ const Layout = ({ title, children }) => {
           </nav>
         </header>
         <main className="container m-auto mt-4 px-4">{children}</main>
-        <footer className="flex justify-center items-center h-10 shadow-inner ">
-          <p>CopyRight &copy; 2022 Jupiter </p>
-        </footer>
+        <FooterScreen />
       </div>
     </>
   );
