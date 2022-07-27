@@ -1,34 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Jupiter - Nextjs E-commerce apps 
 
-## Getting Started
+I noticed that people in React community talk about Next.js, and I have seen many Tech YouTuber talk about it. Next.Js has been praised about its faster development advantage, SEO-friendly as Next.js using SSR(server-side rendering), image optimization, etc. 
 
-First, run the development server:
+So I would like have to try to build an E-commerce project using Next.js, therefore I can explore more about this framework. Besides that, I am keen to know how an E-commerce web would be setup in real world, from frontend customer interacting page, admin pages to allow admin customize the product and seing report of sales, to serverside and database setup.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+By doing this project, its not only enchance my knowledge of Next.js, React.js. Web apps authentication can be very confused, with the help of NextAuth.js,saving token, let user stay login, all the issue has been solved. Paypal paying method is used in this project. Payment method setting could be complicated, but successfully setup in the end.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build another Next.js E-commerce apps again would be my next step, and setup the paying method using Stripe together with Paypal, different UI design would be tried.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## :rocket: Tools and Technologies For Project
+- Next.js
+- Tailwind Css (I would say it is a shortcut to write CSS, it would be more easy if you understanding plain CSS3)
+- NextAuth.js (for authentication)
+- MongoDB & Mongoose (saving info on database)
+- PayPal (payment method)
+- Cloudinary (upload and save project image on cloud)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## How to Use the Project
+There are two roles for this project : **customer** and **admin**.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- For using this apps as customer, using following info to login or can create a new account :
+  - email : user@example.com , password : 123456
+- For using this apps as admin, using following info to login :
+  - email : admin@example.com , password : 123456
 
-## Learn More
+## Special Thanks to Credits
 
-To learn more about Next.js, take a look at the following resources:
+Thank you ***Bassir Jafarzadeh***! I following his tutorial to build this project. I am so appreciate that he willing to share all his knowledge with everyone on the world. :hearts: 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+I learn a lot from his channel, here is the link : https://www.youtube.com/c/CodingwithBasir
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
