@@ -1,5 +1,16 @@
 # Jupiter - Nextjs E-commerce apps 
 
+## Hi 👋, I'm Low Zhen Ning
+========================
+
+### A catechumen who just start to exploring tech development world
+
+🌱 I’m currently learning React.js, React Native, Docker and more. 
+
+📫 How to reach me : 
+- Email : lowzn94@gmail.com
+- Facebook : https://www.facebook.com/laurence.low.3/
+- LinkedIn : https://www.linkedin.com/in/zhen-ning-low-13b415202/
 
 ## Purpose of Project
 
